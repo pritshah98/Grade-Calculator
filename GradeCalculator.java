@@ -28,6 +28,7 @@ public class GradeCalculator extends Application {
     private Alert doubleAlert = new Alert(AlertType.INFORMATION);
     private Double overallGrade = 0.0;
     private Double totalWeight = 0.0;
+    private Double returnGrade = overallGrade/totalWeight;
 
     public static void main(String[] args) {
         launch(args);
@@ -91,7 +92,7 @@ public class GradeCalculator extends Application {
     }
 
     public Scene getScene() {
-        if (overallGrade >= 90) {
+        if (returnGrade >= 90) {
             Image smile = new Image("File:./Smile.jpg");
             ImageView smileView = new ImageView();
             smileView.setImage(smile);
@@ -99,7 +100,7 @@ public class GradeCalculator extends Application {
             feedback.setFont(Font.font(16));
             layout.getChildren().addAll(smileView, feedback);
             scene = new Scene(layout, 500, 300);
-        } else if (overallGrade >= 80 && overallGrade < 90) {
+        } else if (returnGrade >= 80 && returnGrade < 90) {
             Image smirk = new Image("File:./Smirk.png");
             ImageView smirkView = new ImageView();
             smirkView.setImage(smirk);
@@ -107,7 +108,7 @@ public class GradeCalculator extends Application {
             feedback.setFont(Font.font(16));
             layout.getChildren().addAll(smirkView, feedback);
             scene = new Scene(layout, 500, 450);
-        } else if (overallGrade >= 75 && overallGrade < 80){
+        } else if (returnGrade >= 75 && returnGrade < 80){
             Image eh = new Image("File:./Eh.png");
             ImageView ehView = new ImageView();
             ehView.setImage(eh);
