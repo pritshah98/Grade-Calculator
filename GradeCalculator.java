@@ -28,7 +28,6 @@ public class GradeCalculator extends Application {
     private Alert doubleAlert = new Alert(AlertType.INFORMATION);
     private Double overallGrade = 0.0;
     private Double totalWeight = 0.0;
-    private Double returnGrade = overallGrade/totalWeight;
 
     public static void main(String[] args) {
         launch(args);
@@ -92,6 +91,7 @@ public class GradeCalculator extends Application {
     }
 
     public Scene getScene() {
+        Double returnGrade = overallGrade/totalWeight;
         if (returnGrade >= 90) {
             Image smile = new Image("File:./Smile.jpg");
             ImageView smileView = new ImageView();
