@@ -39,7 +39,7 @@ public class GradeCalculator extends Application {
     public void start(Stage window) throws Exception {
         window.setTitle("Grade Calculator");
         numGrades.setTitle("Grade Calculator");
-        numGrades.setHeaderText("Enter in the number of grades being input.");
+        numGrades.setHeaderText("Enter in the number of grades to input.");
         Optional<String> desiredNum = numGrades.showAndWait();
         if (desiredNum.isPresent()) {
             doubleAlert.setTitle("IMPORTANT NOTICE");
