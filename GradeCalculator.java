@@ -90,7 +90,7 @@ public class GradeCalculator extends Application {
     public Scene getScene() {
         Double returnGrade = overallGrade/totalWeight;
         if (returnGrade >= 90) {
-            Image smile = new Image("File:./Smile.jpg");
+            Image smile = new Image("http://images.clipartpanda.com/laughing-smiley-face-clip-art-k0152710.jpg");
             ImageView smileView = new ImageView();
             smileView.setImage(smile);
             feedback.setText("GREAT WORK! KEEP IT UP!");
@@ -98,7 +98,7 @@ public class GradeCalculator extends Application {
             layout.getChildren().addAll(smileView, feedback);
             scene = new Scene(layout, 500, 300);
         } else if (returnGrade >= 80 && returnGrade < 90) {
-            Image smirk = new Image("File:./Smirk.png");
+            Image smirk = new Image("https://cdn4.iconfinder.com/data/icons/mood-smiles/80/mood-16-128.png");
             ImageView smirkView = new ImageView();
             smirkView.setImage(smirk);
             feedback.setText("NOT BAD!");
@@ -106,15 +106,15 @@ public class GradeCalculator extends Application {
             layout.getChildren().addAll(smirkView, feedback);
             scene = new Scene(layout, 500, 450);
         } else if (returnGrade >= 75 && returnGrade < 80){
-            Image eh = new Image("File:./Eh.png");
+            Image eh = new Image("https://image.flaticon.com/icons/png/128/42/42890.png");
             ImageView ehView = new ImageView();
             ehView.setImage(eh);
-            feedback.setText("YOU CAN STILL BRING IT UP! YOU GOT THIS!");
+            feedback.setText("I CAN TELL YOU'VE BEEN SLACKING!");
             feedback.setFont(Font.font(16));
             layout.getChildren().addAll(ehView, feedback);
             scene = new Scene(layout, 500, 500);
         } else {
-            Image unhappy = new Image("File:./Unhappy.jpg");
+            Image unhappy = new Image("http://findicons.com/files/icons/350/aqua_smiles/128/sad.png");
             ImageView unhappyView = new ImageView();
             unhappyView.setImage(unhappy);
             feedback.setText("THAT'S NOT GOOD...");
