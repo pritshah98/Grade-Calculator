@@ -21,13 +21,13 @@ public class GradeCalculator extends Application {
     private ButtonType enter = new ButtonType("ENTER", ButtonData.OK_DONE);
     private VBox layout = new VBox(20);
     private TextInputDialog numGrades = new TextInputDialog();
-    private Map<Double, Double> gradeMap = new HashMap<>();
+    private List<Double> gradeList = new ArrayList<>();
+    private List<Double> weightList = new ArrayList<>();
     private Text finalGrade = new Text();
     private TextField grade = new TextField();
     private TextField weight = new TextField();
     private Text feedback = new Text();
     private Dialog<Pair<String, String>> inputDialog = new Dialog<>();
-    private Alert doubleAlert = new Alert(AlertType.INFORMATION);
     private Double overallGrade = 0.0;
     private Double totalWeight = 0.0;
 
@@ -42,9 +42,6 @@ public class GradeCalculator extends Application {
         numGrades.setHeaderText("Enter in the number of grades to input.");
         Optional<String> desiredNum = numGrades.showAndWait();
         if (desiredNum.isPresent()) {
-            doubleAlert.setTitle("IMPORTANT NOTICE");
-            doubleAlert.setHeaderText("Weight must be input as a decimal value (e.g. 15% = 0.15)");
-            doubleAlert.showAndWait();
             for (int i = 0; i < Integer.parseInt(desiredNum.get()); i++) {
                 enterGrades();
                 grade.clear();
@@ -60,11 +57,9 @@ public class GradeCalculator extends Application {
     }
 
     public void getGrade() {
-        Iterator it = gradeMap.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            overallGrade += (((Double)pair.getKey()) * ((Double)pair.getValue()));
-            totalWeight += ((Double)pair.getValue());
+        for(int i = 0; i < gradeList.size(); i++) {
+            overallGrade += (gradeList.get(i) * weightList.get(i));
+            totalWeight += weightList.get(i);
         }
         finalGrade.setText("Final Calculated Grade: "
         + String.format("%.4g%n", overallGrade/totalWeight)
@@ -87,8 +82,8 @@ public class GradeCalculator extends Application {
         inputDialog.getDialogPane().setContent(grid);
         Optional<Pair<String, String>> result = inputDialog.showAndWait();
         if (result.isPresent()) {
-            gradeMap.put(Double.parseDouble(grade.getText()),
-            Double.parseDouble(weight.getText()));
+            gradeList.add(Double.parseDouble(grade.getText()));
+            weightList.add(Double.parseDouble(weight.getText()) / 100.0);
         }
     }
 
